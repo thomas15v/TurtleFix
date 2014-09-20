@@ -32,10 +32,10 @@ public class TurtleBreakFixTransformer extends Transformer {
                 return false;
             }
 
-            LabelNode node1 = MethodUtil.getLabelWithInsn(methodNode, new MethodInsnNode(INVOKESPECIAL,
+            LabelNode node1 = NavigationUtil.getPreviousLabel(MethodUtil.getLabelWithInsn(methodNode, new MethodInsnNode(INVOKESPECIAL,
                                                                                          "dan200/computercraft/shared/turtle/upgrades/TurtleTool",
                                                                                          "getBlockDropped",
-                                                                                         "(Lnet/minecraft/world/World;III)Ljava/util/ArrayList;"));
+                                                                                         "(Lnet/minecraft/world/World;III)Ljava/util/ArrayList;")));
             if (node1 == null) {
                 logger.severe("[TurtleFix][Break] Something went terrible when trying to find a injection point in the dig method, Your your using minecraftforge 964?");
                 return false;
@@ -56,13 +56,14 @@ public class TurtleBreakFixTransformer extends Transformer {
             blockbreakcode.add(new MethodInsnNode(INVOKESTATIC, "com/thomas15v/turtlefix/Util", "TurtleCanBreakBlock",
                                                   "(Lnet/minecraft/world/World;III)Z"));
             LabelNode label2 = new LabelNode();
-            blockbreakcode.add(new JumpInsnNode(IFNE, label2));
+            blockbreakcode.add(new JumpInsnNode(IFEQ, label2));
 
             methodNode.instructions.insert(node1, blockbreakcode);
 
             LabelNode last = NavigationUtil.getNextLabel(MethodUtil.getLabelWithInsn(methodNode, new MethodInsnNode(INVOKESTATIC, "dan200/computercraft/api/turtle/TurtleCommandResult", "success", "()Ldan200/computercraft/api/turtle/TurtleCommandResult;")));
 
             methodNode.instructions.insertBefore(last, label2);
+
 
             logger.info("[TurtleFix][Break] Patch done!");
             return true;

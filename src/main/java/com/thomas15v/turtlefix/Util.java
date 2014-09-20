@@ -3,8 +3,6 @@ package com.thomas15v.turtlefix;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraftforge.common.FakePlayerFactory;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.Event;
 import net.minecraftforge.event.world.BlockEvent;
 import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.InsnList;
@@ -21,14 +19,11 @@ import java.io.StringWriter;
  */
 public class Util {
 
-    public static boolean TurtleCanNotBreakBlock(World world, int x, int y, int z){
+    public static boolean TurtleCanBreakBlock(World world, int x, int y, int z){
         BlockEvent event =
                 new BlockEvent.BreakEvent(x,y,z,world, Block.blocksList[world.getBlockId(x,y,z)],world.getBlockMetadata(x,y,z), FakePlayerFactory.get(
                         world, "[ComputerCraft]"));
-
-        MinecraftForge.EVENT_BUS.post(event);
-
-        return event.getResult() != Event.Result.DENY;
+        return !event.isCanceled();
     }
 
     private static Printer printer = new Textifier();
