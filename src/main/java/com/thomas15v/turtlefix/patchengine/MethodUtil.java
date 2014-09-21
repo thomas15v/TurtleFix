@@ -1,4 +1,7 @@
-package patchengine.asm.util;
+/***
+ * This class is a copy MazeXD's PatchEngine mod https://github.com/MazeXD/PatchEngine
+ */
+package com.thomas15v.turtlefix.patchengine;
 
 import static org.objectweb.asm.Opcodes.IFEQ;
 
@@ -8,8 +11,6 @@ import org.objectweb.asm.tree.JumpInsnNode;
 import org.objectweb.asm.tree.LabelNode;
 import org.objectweb.asm.tree.LocalVariableNode;
 import org.objectweb.asm.tree.MethodNode;
-
-import cpw.mods.fml.common.FMLLog;
 
 public class MethodUtil {
     public static LocalVariableNode getLocalVariable(MethodNode node, String name, String desc) {
