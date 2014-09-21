@@ -53,13 +53,13 @@ public class TurtleBreakFixTransformer extends Transformer {
             blockbreakcode.add(new VarInsnNode(ILOAD, 5));
             blockbreakcode.add(new VarInsnNode(ILOAD, 6));
             blockbreakcode.add(new VarInsnNode(ILOAD, 7));
-            blockbreakcode.add(new MethodInsnNode(INVOKESTATIC, "com/thomas15v/turtlefix/patchengine", "TurtleCanBreakBlock",
+            blockbreakcode.add(new MethodInsnNode(INVOKESTATIC, "com/thomas15v/turtlefix/Util", "TurtleCanBreakBlock",
                                                   "(Lnet/minecraft/world/World;III)Z"));
             LabelNode label2 = new LabelNode();
             blockbreakcode.add(new JumpInsnNode(IFEQ, label2));
             methodNode.instructions.insert(node1, blockbreakcode);
 
-            LabelNode last = NavigationUtil.getPreviousLabel(MethodUtil.getLastLabel(methodNode));
+            LabelNode last = MethodUtil.getLastLabel(methodNode);
 
             InsnList endcode = new InsnList();
             endcode.add(label2);
