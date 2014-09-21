@@ -1,4 +1,7 @@
-package patchengine.asm.util;
+/***
+ * This class is a copy MazeXD's PatchEngine mod https://github.com/MazeXD/PatchEngine
+ */
+package com.thomas15v.turtlefix.patchengine;
 
 import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.InsnList;

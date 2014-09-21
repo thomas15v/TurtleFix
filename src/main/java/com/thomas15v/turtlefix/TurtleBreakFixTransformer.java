@@ -8,9 +8,9 @@ import org.objectweb.asm.tree.LabelNode;
 import org.objectweb.asm.tree.MethodInsnNode;
 import org.objectweb.asm.tree.MethodNode;
 import org.objectweb.asm.tree.VarInsnNode;
-import patchengine.asm.util.ClassUtil;
-import patchengine.asm.util.MethodUtil;
-import patchengine.asm.util.NavigationUtil;
+import com.thomas15v.turtlefix.patchengine.ClassUtil;
+import com.thomas15v.turtlefix.patchengine.MethodUtil;
+import com.thomas15v.turtlefix.patchengine.NavigationUtil;
 
 import java.util.logging.Logger;
 
