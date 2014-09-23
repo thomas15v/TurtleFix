@@ -23,6 +23,7 @@ public class Util {
         BlockEvent event =
                 new BlockEvent.BreakEvent(x,y,z,world, Block.blocksList[world.getBlockId(x,y,z)],world.getBlockMetadata(x,y,z), FakePlayerFactory.get(
                         world, "[ComputerCraft]"));
+        MinecraftForge.EVENT_BUS.post(event);
         return !event.isCanceled();
     }
 
