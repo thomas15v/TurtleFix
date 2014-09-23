@@ -11,7 +11,8 @@ public class TurtleFix implements IFMLLoadingPlugin {
 
     @Override
     public String[] getASMTransformerClass() {
-        return new String[]{"com.thomas15v.turtlefix.TurtleBreakFixTransformer"};
+        return new String[]{"com.thomas15v.turtlefix.TurtleBreakFixTransformer",
+                            "com.thomas15v.turtlefix.ThaumCraftBoreTransformer"};
     }
 
     @Override

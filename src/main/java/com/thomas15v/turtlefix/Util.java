@@ -26,6 +26,13 @@ public class Util {
         return !event.isCanceled();
     }
 
+    public static boolean BoreCanBreakBlock(World world, int x, int y, int z){
+        BlockEvent event =
+                new BlockEvent.BreakEvent(x,y,z,world, Block.blocksList[world.getBlockId(x,y,z)],world.getBlockMetadata(x,y,z), FakePlayerFactory.get(
+                        world, "[FakeThaumcraftBore]"));
+        return !event.isCanceled();
+    }
+
     private static Printer printer = new Textifier();
     private static TraceMethodVisitor mp = new TraceMethodVisitor(printer);
 
