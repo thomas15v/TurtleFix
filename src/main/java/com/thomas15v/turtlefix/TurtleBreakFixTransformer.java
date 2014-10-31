@@ -37,11 +37,11 @@ public class TurtleBreakFixTransformer extends Transformer {
                                                                                          "getBlockDropped",
                                                                                          "(Lnet/minecraft/world/World;III)Ljava/util/ArrayList;")));
             if (node1 == null) {
-                logger.severe("[TurtleFix][Break] Something went terrible when trying to find a injection point in the dig method, Your your using minecraftforge 964?");
+                logger.severe("[TurtleFix][Break] Something went terribly wrong when trying to find a injection point in the dig method, You're using minecraftforge 964?");
                 return false;
             }
 
-            logger.info("[TurtleFix][Break] Injection Point found!! Here we goooooo ....");
+            logger.info("[TurtleFix][Break] Located injection point, Here we go!");
 
             InsnList blockbreakcode = new InsnList();
             LabelNode label1 = new LabelNode();
@@ -65,7 +65,7 @@ public class TurtleBreakFixTransformer extends Transformer {
             methodNode.instructions.insertBefore(last, label2);
 
 
-            logger.info("[TurtleFix][Break] Patch done!");
+            logger.info("[TurtleFix][Break] Patch completed!");
             return true;
         }else
         {
