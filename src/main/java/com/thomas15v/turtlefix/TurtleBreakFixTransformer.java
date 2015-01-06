@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 
 public class TurtleBreakFixTransformer extends Transformer {
 
-    private static final Logger logger = Logger.getLogger("TurtleFix");
+    private static final Logger logger = Logger.getLogger("ASMPatcher");
 
     @Override
     public boolean transform(String name, String transformedName, ClassNode classNode) {
