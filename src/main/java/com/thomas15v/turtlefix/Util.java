@@ -19,14 +19,24 @@ import java.io.StringWriter;
  */
 public class Util {
 
-    public static boolean TurtleCanBreakBlock(World world, int x, int y, int z){
-        BlockEvent event =
-                new BlockEvent.BreakEvent(x,y,z,world, Block.blocksList[world.getBlockId(x,y,z)],world.getBlockMetadata(x,y,z), FakePlayerFactory.get(
-                        world, "[ComputerCraft]"));
-        MinecraftForge.EVENT_BUS.post(event);
+    public static boolean TurtleCanBreakBlock(WorldServer world, int x, int y, int z){
+
+        Block block = world.getBlock(x, y, z);
+        GameProfile MINECRAFT = new GameProfile(UUID.fromString("41C82C87-7AfB-4024-BA57-13D2C99CAE77"), "[ComputerCraft]");
+        BlockEvent event;
+        event = new BlockEvent.BreakEvent(x, y, z, world, block, z, FakePlayerFactory.get(world, MINECRAFT));
         return !event.isCanceled();
     }
+   
+    public static boolean BoreCanBreakBlock(World world, int x, int y, int z){
+        Block block = world.getBlock(x, y, z);
 
+        GameProfile MINECRAFT = new GameProfile(UUID.fromString("41C82C87-7AfB-4024-BA57-13D2C99CAE77"), "[FakeThaumcraftBore]");
+        BlockEvent event;
+        event = new BlockEvent.BreakEvent(x, y, z, world, block, z, FakePlayerFactory.get((WorldServer) world, MINECRAFT));
+        return !event.isCanceled();
+    }
+    
     private static Printer printer = new Textifier();
     private static TraceMethodVisitor mp = new TraceMethodVisitor(printer);
 
